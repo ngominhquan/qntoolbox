@@ -8,8 +8,7 @@ west build -b nucleo_l031k6 -p auto --sysbuild
 
 build for rpi-pico2 board:
 ```
-cd c:\brash\amico\repo\i2c_test_tool
-set BOARD_ROOT=c:\brash\amico\repo\i2c_test_tool
+cd c:\mydev\qntoolbox
 set ZEPHYR_BASE=c:\users\peter\zephyrproject\zephyr
 west build -b rpi_pico2/rp2350a/m33 
 ```
