@@ -1,0 +1,47 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch nucleo",
+            "device": "stm32f401xe",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/blinky/zephyr/zephyr.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "stlink",
+            "gdbPath": "${userHome}/zephyr-sdk-0.17.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb",
+            // "preLaunchTask": "West Build f401re"
+            "preLaunchCommands": [
+                "set $msp=*(unsigned int*)0x08020000",
+                "set $pc=*(unsigned int*)0x08020004"
+            ],
+            "postLaunchCommands": [
+                "continue"
+            ]    
+        },
+        {
+            "name": "Launch",
+            "device": "stm32f401xe",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/zephyr/zephyr.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "jlink",
+            "gdbPath": "${userHome}/zephyr-sdk-0.17.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb",
+            "preLaunchTask": "West Build"
+        },
+        {
+            "name": "Attach",
+            "device": "stm32f401xe",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/zephyr/zephyr.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "jlink",
+            "gdbPath": "${userHome}/zephyr-sdk-0.17.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb"
+        }
+    ]
+}

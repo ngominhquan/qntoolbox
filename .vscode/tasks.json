@@ -1,0 +1,184 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "West Build f401re",
+			"type": "shell",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"linux": {
+				"command": "${userHome}/zephyrproject/.venv/bin/west"
+			},
+			"windows": {
+				"command": "${userHome}/zephyrproject/.venv/Scripts/west.exe"
+			},
+			"osx": {
+				"command": "${userHome}/zephyrproject/.venv/bin/west"
+			},
+			"args": [
+				"build",
+				"-b",
+				"nucleo_f401re",
+				"--sysbuild",
+				"--",
+				"-DCONFIG_DEBUG_OPTIMIZATIONS=y"
+			],
+			"problemMatcher": [
+				"$gcc"
+			]
+		},
+		{
+			"label": "West Build f401re pristine",
+			"type": "shell",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"linux": {
+				"command": "${userHome}/zephyrproject/.venv/bin/west"
+			},
+			"windows": {
+				"command": "${userHome}/zephyrproject/.venv/Scripts/west.exe"
+			},
+			"osx": {
+				"command": "${userHome}/zephyrproject/.venv/bin/west"
+			},
+			"args": [
+				"build",
+				"-p",
+				"auto",
+				"-b",
+				"nucleo_f401re",
+				"--sysbuild",
+				"--",
+				"-DCONFIG_DEBUG_OPTIMIZATIONS=y"
+			],
+			"problemMatcher": [
+				"$gcc"
+			]
+		},
+		{
+			"label": "West Build smart_light pristine",
+			"type": "shell",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"linux": {
+				"command": "${userHome}/zephyrproject/.venv/bin/west"
+			},
+			"windows": {
+				"command": "${userHome}/zephyrproject/.venv/Scripts/west.exe"
+			},
+			"osx": {
+				"command": "${userHome}/zephyrproject/.venv/bin/west"
+			},
+			"args": [
+				"build",
+				"-p",
+				"auto",
+				"-b",
+				"smart_light",
+				"--",
+				"-DCONFIG_DEBUG_OPTIMIZATIONS=y"
+			],
+			"problemMatcher": [
+				"$gcc"
+			]
+		},
+		{
+			"label": "West Build smart_light",
+			"type": "shell",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"linux": {
+				"command": "${userHome}/zephyrproject/.venv/bin/west"
+			},
+			"windows": {
+				"command": "${userHome}/zephyrproject/.venv/Scripts/west.exe"
+			},
+			"osx": {
+				"command": "${userHome}/zephyrproject/.venv/bin/west"
+			},
+			"args": [
+				"build",
+				"-b",
+				"smart_light",
+				"--",
+				"-DCONFIG_DEBUG_OPTIMIZATIONS=y"
+			],
+			"problemMatcher": [
+				"$gcc"
+			]
+		},
+
+		{
+			"label": "West Configurable Build",
+			"type": "shell",
+			"group": {
+				"kind": "build"
+			},
+			"linux": {
+				"command": "${userHome}/zephyrproject/.venv/bin/west"
+			},
+			"windows": {
+				"command": "${userHome}/zephyrproject/.venv/Scripts/west.exe"
+			},
+			"osx": {
+				"command": "${userHome}/zephyrproject/.venv/bin/west"
+			},
+			"args": [
+				"build",
+				"-p",
+				"${input:pristine}",
+				"-b",
+				"${input:board}"
+			],
+			"problemMatcher": [
+				"$gcc"
+			]
+		},
+		{
+			"label": "West Flash",
+			"type": "shell",
+			"linux": {
+				"command": "${userHome}/zephyrproject/.venv/bin/west"
+			},
+			"windows": {
+				"command": "${userHome}/zephyrproject/.venv/Scripts/west.exe"
+			},
+			"osx": {
+				"command": "${userHome}/zephyrproject/.venv/bin/west"
+			},
+			"args": [
+				"flash"
+			],
+			"problemMatcher": [
+				"$gcc"
+			]
+		}
+	],
+	"inputs": [
+		{
+			"id": "board",
+			"type": "promptString",
+			"default": "nucleo_f401re",
+			"description": "See https://docs.zephyrproject.org/latest/boards/index.html"
+		},
+		{
+			"id": "pristine",
+			"type": "pickString",
+			"description": "Choose when to run a pristine build",
+			"default": "auto",
+			"options": [
+				"auto",
+				"always",
+				"never"
+			]
+		}
+	]
+}

@@ -1,0 +1,21 @@
+{
+        // Hush CMake
+		"cmake.configureOnOpen": false,
+
+		// IntelliSense
+		"C_Cpp.default.compilerPath": "${userHome}/zephyr-sdk-0.17.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc.exe",
+		"C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+
+		// File Associations
+		"files.associations": {
+			"kernel.h": "c",
+			"pwm.h": "c",
+			"communication.h": "c",
+			"random": "c",
+			"type_traits": "c",
+			"amico_config.h": "c",
+			"light_data.h": "c",
+			"util.h": "c",
+			"lsm6dso.h": "c"
+		}
+}
